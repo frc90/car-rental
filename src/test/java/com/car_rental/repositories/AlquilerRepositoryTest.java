@@ -41,7 +41,8 @@ class AlquilerRepositoryTest {
                 LocalDate.of(2025, 2, 1),
                 45.51,
                 cliente1,
-                empleado1
+                empleado1,
+                null
         );
         alquilerRepository.save(alquiler1);
     }

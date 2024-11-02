@@ -35,4 +35,8 @@ public class Vehiculo {
     @ManyToOne
     @JoinColumn(name = "id_tipo")
     private Tipo tipo;
+
+    @ManyToOne
+    @JoinColumn(name = "id_alquiler")
+    private Alquiler alquiler;
 }
