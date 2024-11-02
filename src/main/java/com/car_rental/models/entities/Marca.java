@@ -16,7 +16,7 @@ import java.util.List;
 public class Marca {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_marca;
+    private Long id;
 
     @Column(
             nullable = false,

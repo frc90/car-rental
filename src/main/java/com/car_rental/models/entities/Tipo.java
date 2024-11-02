@@ -16,7 +16,7 @@ import java.util.List;
 public class Tipo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_tipo;
+    private Long id;
 
     @Column(
             nullable = false,

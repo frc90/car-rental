@@ -16,7 +16,7 @@ import java.util.List;
 public class Estado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_estado;
+    private Long id;
 
     @Column(
             nullable = false,
