@@ -61,7 +61,7 @@ class VehiculoRepositoryTest {
                 .orElseGet(() -> estadoRepository.save(new Estado(3L, "Mal Estado", null)));
 
         // Vehículo
-        Vehiculo vehiculo = new Vehiculo(null, "uru-456", marca1, estado1, tipo1);
+        Vehiculo vehiculo = new Vehiculo(null, "uru-456", marca1, estado1, tipo1, null);
         vehiculoRepository.save(vehiculo);
     }
 }

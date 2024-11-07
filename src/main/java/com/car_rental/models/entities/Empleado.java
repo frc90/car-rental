@@ -1,10 +1,8 @@
 package com.car_rental.models.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
@@ -32,6 +30,7 @@ public class Empleado extends User{
             fetch = FetchType.EAGER,
             orphanRemoval = true
     )
+    @JsonManagedReference
     private List<Alquiler> alquileres;
 
     public Empleado(Long id, String nombre, String email, String telefono, String usuario, String clave, List<Alquiler> alquileres) {

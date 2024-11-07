@@ -1,8 +1,10 @@
 package com.car_rental.models.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.List;
 
@@ -16,6 +18,7 @@ public class Cliente extends User{
             orphanRemoval = true,
             mappedBy = "cliente"
     )
+    @JsonManagedReference
     private List<Alquiler> alquileres;
 
 

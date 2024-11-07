@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -25,9 +26,9 @@ class AlquilerRepositoryTest {
 
     @BeforeEach
     void setUp() {
-        alquilerRepository.deleteAll();
-        clienteRepository.deleteAll();
-        empleadoRepository.deleteAll();
+//        alquilerRepository.deleteAll();
+//        clienteRepository.deleteAll();
+//        empleadoRepository.deleteAll();
     }
 
     @Test
@@ -45,5 +46,11 @@ class AlquilerRepositoryTest {
                 null
         );
         alquilerRepository.save(alquiler1);
+    }
+
+    @Test
+    public void getAllAlquileres() {
+        List<Alquiler> alquilerList = alquilerRepository.findAll();
+        alquilerList.forEach(alquiler -> System.out.println("Alquiler ID: " + alquiler.getId()));
     }
 }

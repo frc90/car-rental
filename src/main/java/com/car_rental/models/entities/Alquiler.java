@@ -1,10 +1,8 @@
 package com.car_rental.models.entities;
 
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -14,6 +12,10 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id"
+)
 public class Alquiler {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,10 +35,12 @@ public class Alquiler {
 
     @ManyToOne
     @JoinColumn(name = "id_cliente")
+    @JsonBackReference
     private Cliente cliente;
 
     @ManyToOne
     @JoinColumn(name = "id_empleado")
+    @JsonBackReference
     private Empleado empleado;
 
     @OneToMany(
@@ -44,5 +48,6 @@ public class Alquiler {
             mappedBy = "alquiler",
             fetch = FetchType.EAGER
     )
+    @JsonManagedReference
     private List<Vehiculo> vehiculos;
 }
