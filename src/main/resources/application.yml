@@ -1,11 +1,9 @@
 spring:
   application:
     name: Car Rental
-  datasource:
-    url: jdbc:mysql://localhost:3306/car-rental
-    username: root
-    password:
-    driver-class-name: com.mysql.cj.jdbc.Driver
+  profiles:
+    active: mysql # Cambia entre 'mysql' y 'postgres' según la base que quieras usar
+
   jpa:
     hibernate:
       ddl-auto: update
@@ -13,3 +11,27 @@ spring:
       hibernate:
         format_sql: true
     show-sql: true
+
+# Perfil MySQL
+---
+spring:
+  config:
+    activate:
+      on-profile: mysql
+  datasource:
+    url: jdbc:mysql://localhost:3306/car-rental
+    username: root
+    password: rootpassword
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+# Perfil PostgreSQL
+---
+spring:
+  config:
+    activate:
+      on-profile: postgres
+  datasource:
+    url: jdbc:postgresql://localhost:5432/car-rental
+    username: user
+    password: password
+    driver-class-name: org.postgresql.Driver
