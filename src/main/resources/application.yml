@@ -1,37 +1,46 @@
-spring:
-  application:
-    name: Car Rental
-  profiles:
-    active: mysql # Cambia entre 'mysql' y 'postgres' según la base que quieras usar
+#spring:
+#  profiles:
+#    active: dev-null
+#
+#datasource:
+#  url: jdbc:h2:mem:testdb # Base de datos en memoria para evitar errores
+#  username: sa
+#  password: password
 
-  jpa:
-    hibernate:
-      ddl-auto: update
-    properties:
-      hibernate:
-        format_sql: true
-    show-sql: true
-
-# Perfil MySQL
----
-spring:
-  config:
-    activate:
-      on-profile: mysql
-  datasource:
-    url: jdbc:mysql://localhost:3306/car-rental
-    username: root
-    password: rootpassword
-    driver-class-name: com.mysql.cj.jdbc.Driver
-
-# Perfil PostgreSQL
----
-spring:
-  config:
-    activate:
-      on-profile: postgres
-  datasource:
-    url: jdbc:postgresql://localhost:5432/car-rental
-    username: user
-    password: password
-    driver-class-name: org.postgresql.Driver
+#spring:
+#  application:
+#    name: Car Rental
+#  profiles:
+#    active: mysql # Cambia entre 'mysql' y 'postgres' según la base que quieras usar
+#
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    properties:
+#      hibernate:
+#        format_sql: true
+#    show-sql: true
+#
+## Perfil MySQL
+#---
+#spring:
+#  config:
+#    activate:
+#      on-profile: mysql
+#  datasource:
+#    url: jdbc:mysql://mysql:3306/car-rental # Usa 'mysql', el nombre del servicio en docker-compose.yml
+#    username: root
+#    password: rootpassword
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#
+## Perfil PostgreSQL
+#---
+#spring:
+#  config:
+#    activate:
+#      on-profile: postgres
+#  datasource:
+#    url: jdbc:postgresql://postgres:5432/car-rental # Usa 'postgres', el nombre del servicio en docker-compose.yml
+#    username: user
+#    password: password
+#    driver-class-name: org.postgresql.Driver

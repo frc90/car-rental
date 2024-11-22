@@ -1,38 +1,24 @@
 version: '3.8'
 services:
-  postgres:
-    image: postgres:15
-    container_name: postgres-container
+  app:
+    container_name: car-rental-container
+    image: car-rental:1.0.0
+    build: .
     ports:
-      - "5432:5432"
+      - 8080:8080
     environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: car-rental
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    networks:
-      - backend
-
+      - DATABASE_URL=jdbc:mysql://mysql:3306/car-rental
+      - DATABASE_USERNAME=root
+      - DATABASE_PASSWORD=password
+    depends_on:
+      - mysql
   mysql:
     image: mysql:8
-    container_name: mysql-container
+    container_name: mysql
     ports:
       - "3306:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_DATABASE: car-rental
       MYSQL_USER: user
       MYSQL_PASSWORD: password
-    volumes:
-      - mysql_data:/var/lib/mysql
-    networks:
-      - backend
-
-volumes:
-  postgres_data:
-  mysql_data:
-
-networks:
-  backend:
-    driver: bridge
+      MYSQL_ROOT_PASSWORD: password
